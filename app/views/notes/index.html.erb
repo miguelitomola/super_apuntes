@@ -1,0 +1,21 @@
+<nav class="navigator">
+	<ul class="verticalAlign">
+		<li class="inline"><%=link_to "Home", root_path %></li>
+		><li class="inline">Notas</li>
+	</ul>
+</nav>
+
+<h2 class="notes_title"><%= link_to "Nueva nota", new_note_path %></h2>
+<br>
+
+<h2 class="notes_title">Últimos apuntes</h2>
+
+<ul class="notes">
+	<% @notes.each do |note|%>
+		<li class="notes_list">
+			<%= link_to note.title, note_path(note) %> | 
+			<%= link_to "borrar", note,  method: :delete  %>
+			<br>
+		</li>
+	<% end %>
+</ul>

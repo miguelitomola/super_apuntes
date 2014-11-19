@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-
+  
   root 'static_pages#home'
+  
+  get 'sample', to: 'static_pages#sample'
+
+  resources :notes
 
   #get 'home', to: 'staticpages#home'
 

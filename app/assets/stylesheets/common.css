@@ -1,0 +1,49 @@
+/* SELECTOR UNIVERSAL */
+*{
+
+}
+
+/* AÑADE AL CONTENEDOR LA ALTURA DEL CONTENIDO */
+.cf:before, .cs:after {
+	content: " "; 
+	display: table;
+	}
+
+.cf:after {
+	clear: both;
+}
+
+/* ALINEA ELEMENTOS VERTICALMENTE */
+.verticalAlign {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.verticalAlign2 {
+	position: relative;
+	top: 50%;
+}
+
+/* ESTRUCTURA DE FACEBOOK 
+
+	HTML: 
+
+	<div class="media attribution">
+  	<a href="" class="img">
+   	 <img src="" alt="me" />
+  	</a>
+
+  	<div class="bd">
+    	Text
+  	</div>
+
+	</div>
+
+	CSS:
+
+	.media {margin:10px;}
+	.media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
+	.media .img {float:left; margin-right: 10px;}
+	.media .img img{display:block;}
+*/

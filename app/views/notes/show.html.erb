@@ -1,0 +1,14 @@
+<nav class="navigator">
+	<ul class="verticalAlign">
+		<li class="inline"><%=link_to "Home", root_path %></li>
+		><li class="inline"><%=link_to "Notas", notes_path %></li>
+		><li class="inline"><%= @note.title %></li>
+	</ul>
+</nav>
+
+<h2 class="notes_title"><%= @note.title %></h2>
+
+<section class="notes notes_list">
+	<p>- edit | delete -</p>
+	<p><%= @note.body %></p>
+</section>
