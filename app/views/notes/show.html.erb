@@ -9,6 +9,6 @@
 <h2 class="notes_title"><%= @note.title %></h2>
 
 <section class="notes notes_list">
-	<p>- edit | delete -</p>
+	<p>- <%=link_to "editar", edit_note_path %> | <%= link_to "borrar", note_path(@note), method: :delete, confirm: "¿Seguro que que quires eliminiar #{@note.title}?"%> -</p>
 	<p><%= @note.body %></p>
 </section>

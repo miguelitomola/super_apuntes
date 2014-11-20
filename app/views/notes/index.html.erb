@@ -9,13 +9,14 @@
 <br>
 
 <h2 class="notes_title">Últimos apuntes</h2>
-
+<% if flash[:notice] %>
+	<% flash[:notice] %>
+<% end %>
 <ul class="notes">
 	<% @notes.each do |note|%>
 		<li class="notes_list">
 			<%= link_to note.title, note_path(note) %> | 
-			<%= link_to "borrar", note,  method: :delete  %>
-			<br>
+			<%= link_to "borrar", note_path(note), method: :delete, confirm: "¿Seguro que que quires eliminiar #{note.title}?"%>
 		</li>
 	<% end %>
 </ul>
