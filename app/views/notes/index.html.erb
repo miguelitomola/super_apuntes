@@ -9,8 +9,10 @@
 <br>
 
 <h2 class="notes_title">Últimos apuntes</h2>
-<% if flash[:notice] %>
-	<% flash[:notice] %>
+<% if flash["notice"] %><!-- los :símbolos y "strings" no son intercambiables en todas partes! -->
+  <div class='flash-notice'><!-- ponle estilos chulos a esta clase css -->
+    <%= flash["notice"] %>
+  </div>
 <% end %>
 <ul class="notes">
 	<% @notes.each do |note|%>
