@@ -1,0 +1,27 @@
+<nav class="navigator">
+	<ul class="verticalAlign">
+		<li class="inline"><%=link_to "Home", root_path %></li>
+		><li class="inline"><%=link_to "Comunidades", communities_path %></li>
+		><li class="inline"><%= @community.name %></li>
+	</ul>
+</nav>
+
+<section class="communities communities_list">
+	
+	<h2 class="communities_title inline_block"><%= @community.name %></h2>
+	<p class="inline_block verticalAlign">- <%=link_to "editar", edit_community_path, class:"communities_link" %> | <%= link_to "borrar", community_path(@community), method: :delete, data: {confirm: "¿Seguro que que quires eliminiar #{@community.name}?"}, class:"communities_link"%> -</p>
+
+	<ul class="communities_notes">
+		
+		<h3 class="communities_notes_title inline_block">Apuntes de la comunidad</h3>
+		<p class="inline_block verticalAlign"> - <%=link_to "Nueva nota", new_note_path(@community) %>
+
+		<% @community.notes.each do |note| %>
+			<li class="communities_notes_list">
+			<p><%= link_to note.title, note_path(note) %></p>
+		</li>
+		<% end %>
+
+	</ul>
+</section>
+

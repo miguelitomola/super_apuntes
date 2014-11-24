@@ -1,24 +1,41 @@
 <nav class="navigator">
 	<ul class="verticalAlign">
 		<li class="inline"><%=link_to "Home", root_path %></li>
-		><li class="inline">Notas</li>
+		><li class="inline">Apuntes</li>
 	</ul>
 </nav>
 
 <h2 class="notes_title"><%= link_to "Nueva nota", new_note_path %></h2>
 <br>
 
-<h2 class="notes_title">Últimos apuntes</h2>
-<% if flash["notice"] %><!-- los :símbolos y "strings" no son intercambiables en todas partes! -->
-  <div class='flash-notice'><!-- ponle estilos chulos a esta clase css -->
-    <%= flash["notice"] %>
-  </div>
-<% end %>
+<h1 class="notes_title">Últimos apuntes</h1>
+
 <ul class="notes">
-	<% @notes.each do |note|%>
-		<li class="notes_list">
-			<%= link_to note.title, note_path(note) %> | 
-			<%= link_to "borrar", note_path(note), method: :delete, confirm: "¿Seguro que que quires eliminiar #{note.title}?"%>
-		</li>
+
+	<% if flash["new_note"] %><!-- los :símbolos y "strings" no son intercambiables en todas partes! -->
+  	<div class="flash_note">
+    	<%= flash["new_note"] %>
+  	</div>
 	<% end %>
+
+	<% if flash["note_updated"] %>
+  	<div class="flash_note">
+    	<%= flash["note_updated"] %>
+  	</div>
+	<% end %>
+	
+	<% @notes.each do |note|%>
+	
+		<li class="notes_list">
+			
+			<%= link_to note.title, note_path(note) %> 
+
+			<p class="actions inline_block">
+				- <%=link_to "editar", edit_note_path(note) %> | <%= link_to "borrar", note_path(note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{note.title}?"}%> 
+			</p>
+
+		</li>
+
+	<% end %>
+
 </ul>

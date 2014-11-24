@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   
   get 'sample', to: 'static_pages#sample'
 
+  resources :communities do
+    resources :notes
+  end
+
   resources :notes
 
   #get 'home', to: 'staticpages#home'

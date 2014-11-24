@@ -1,0 +1,40 @@
+<nav class="navigator">
+	<ul class="verticalAlign">
+		<li class="inline"><%=link_to "Home", root_path %></li>
+		><li class="inline"><%=link_to "Comunidades", communities_path %></li>
+		><li class="inline"><%=link_to @community.name, community_path(@community) %></li>
+		><li class="inline">Editando <%= @community.name %></li>
+	</ul>
+</nav>
+
+<h2 class="communities_title">Editando comunidad "<%= @community.name %>"</h2>
+
+<section class="communities communities_list">
+
+	<%= form_for [@community] do |f| %>
+
+		<h3 class="communities_title">
+				<%= f.label :nombre %>
+		</h3>
+
+		<p>
+			<%= f.text_field :name, class:"community_title" %>
+		</p>
+
+		<h3 class="communities_title">
+			<%= f.label :descripción %>
+		</h3>
+
+		<p>
+			<%= f.text_field :description, class:"community_text_field" %>
+		</p>
+
+		<%= f.submit "Guardar", :class => "submit_button inline_block" %>
+		<p class="button inline_block"><%= link_to "Cancelar", community_path(@community), class:"communities_link" %></p>
+
+	<% end %>
+
+</section>
+
+
+

@@ -1,0 +1,55 @@
+<nav class="navigator">
+	<ul class="verticalAlign">
+		<li class="inline"><%=link_to "Home", root_path %></li>
+		><li class="inline">Comunidades</li>
+	</ul>
+</nav>
+
+<h2 class="communities_title"><%= link_to "Nueva comunidad", new_community_path %></h2>
+<br>
+
+<h1 class="communities_title">Últimas comunidades</h1>
+
+<ul class="communities index_communities_list">
+
+	<% if flash["new_community"] %>
+		<div class="flash_note">
+			<%= flash["new_community"] %>
+		</div>
+	<% end %>
+
+	<% if flash["community_updated"] %>
+		<div class="flash_note">
+			<%= flash["community_updated"] %>
+		</div>
+	<% end %>
+
+	<% if flash["community_deleted"] %>
+		<div class="flash_note">
+			<%= flash["community_deleted"] %>
+		</div>
+	<% end %>
+
+
+	<% @community.each do |community|%>
+
+		<li class="communities_list">
+
+			<h3 class="communities_title inline_block">
+
+				<%= link_to community.name, community_path(community), class:"communities_link" %>
+			</h3>
+
+			<p class="inline_block">
+				- <%=link_to "editar", edit_community_path(community), class:"communities_link" %> | <%= link_to "borrar", community_path(community), method: :delete, data: {confirm: "¿Seguro que que quires eliminiar #{community.name}?"}, class:"communities_link"%> 
+			</p>
+			
+			<p>
+				<%= community.description%>
+			</p>
+
+		</li>
+
+	<% end %>
+
+</ul>

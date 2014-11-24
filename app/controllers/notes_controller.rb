@@ -17,27 +17,35 @@ class NotesController < ApplicationController
 	def create
 		@note=Note.new(note_params)
 
+		@note.community_id.to_i
+
 		if @note.save
 			redirect_to notes_path
-			flash[:notice] = "¡Has creado una nueva nota satisfactoriamente!"
+			flash[:new_note] = "¡Has creado una nueva nota satisfactoriamente!"
 		else
          	render :new
 		end
 	end
 
 	def  update  
-	   if  @note.update_attributes(params[:note].permit(:title, :body))  
-	       redirect_to note_path  
+	   if  @note.update_attributes(params[:note].permit(:community_id, :title, :body))  
+	       redirect_to notes_path
+	       flash[:note_updated] = "¡Has actualizado #{@note.title} satisfactoriamente!"
 	   else 
 	   	   #¿Qué hace este else? 
-	       @errors  =  note.errors.full_messages  
-	       render  ‘edit’  
+	       @errors = note.errors.full_messages  
+	       render ‘edit’  
 	   end  
 	end
 
 	def destroy
 		@note.destroy
-		redirect_to notes_path
+		if @note.save
+			redirect_to notes_path
+			flash[:note_updated] = "¡Has eliminad #{@note.title} satisfactoriamente!"
+		else
+			render :index
+		end
 	end
 
 	def edit
@@ -46,7 +54,7 @@ class NotesController < ApplicationController
 
 	private
 		def note_params
-			params.require(:note).permit(:title,:body)
+			params.require(:note).permit(:community_id, :title,:body)
 		end
 
 		def set_note

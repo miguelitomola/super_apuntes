@@ -1,14 +1,24 @@
 <nav class="navigator">
 	<ul class="verticalAlign">
 		<li class="inline"><%=link_to "Home", root_path %></li>
-		><li class="inline"><%=link_to "Notas", notes_path %></li>
+		><li class="inline"><%=link_to "Apuntes", notes_path %></li>
 		><li class="inline"><%= @note.title %></li>
 	</ul>
 </nav>
 
-<h2 class="notes_title"><%= @note.title %></h2>
+<h1 class="notes_title"><%= @note.title %></h1>
+
+	<% if @note.community_id >= 1 %>
+
+		<h3 class="notes_title">Comunidad:<%= link_to @note.community.name, community_path(@note.community_id)%></h3>	
+
+	<% else %>
+
+		<h3 class="notes_title">Comunidad: esta nota no pertenece a ninguna comunidad.</h3>
+			
+	<% end %>
 
 <section class="notes notes_list">
-	<p>- <%=link_to "editar", edit_note_path %> | <%= link_to "borrar", note_path(@note), method: :delete, confirm: "¿Seguro que que quires eliminiar #{@note.title}?"%> -</p>
-	<p><%= @note.body %></p>
+	<p class="actions">- <%=link_to "editar", edit_note_path %> | <%= link_to "borrar", note_path(@note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{@note.title}?"}%> -</p>
+	<p class="note_body_print"><%= @note.body %></p>
 </section>

@@ -13,18 +13,18 @@
 }
 
 h1.notes_title{
-	margin-top: 75px;
-	font-size: 60px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 50px;
 }
 
 h2.notes_title{
-	margin-top: 75px;
-	margin-bottom: 25px;
 	font-size: 40px;
 }
 
 h3.notes_title{
-	margin-top: 15px;
+	font-size: 20px;
+	margin-top: 50px;
 	margin-bottom: 5px;
 }
 
@@ -53,3 +53,39 @@ p{
 	margin-top: 10px;
 }
 
+.note_title{
+	font-size: 20px;
+	width: 80%;
+}
+
+.note_body{
+	font-size: 15px;
+	width: 60%;
+	height: 200px;
+}
+
+.note_body_print{
+	font-size: 20px;
+	width: 60%;
+	height: 200px;
+	margin: 0 auto;
+}
+
+.actions{
+	font-size: 15px;
+	margin-bottom: 20px;
+}
+
+.flash_note{
+	font-size: 20px;
+	font-weight: bold;
+	color: red;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.select_community{
+	font-size: 20px;
+}

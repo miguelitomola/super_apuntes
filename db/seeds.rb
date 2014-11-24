@@ -8,8 +8,24 @@
 
 # Seed some notes
 
+##################################################
+
+Community.create(name: 'IronHack-Generation',
+	description: 'Curso de desarrollo web de la primera edición del programa Generation')
+
+Community.create(name: 'Marketing-Generation',
+	description: 'Curso de marketing digital de la primera edición del programa Generation')
+
+
+##################################################
+
 Note.create(title: 'Nota de prueba', 
-	body: 'Esta es una la nota de prueba uno')
+	body: 'Esta es una la nota de prueba uno',
+	community_id: 1)
 
 Note.create(title: 'Nota de prueba 2', 
-	body: 'Esta es una la nota de prueba dos')
+	body: 'Esta es la nota de prueba dos',
+	community_id: 2)
+
+##################################################
+

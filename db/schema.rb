@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118153826) do
+ActiveRecord::Schema.define(version: 20141120173814) do
+
+  create_table "communities", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "description"
+  end
 
   create_table "notes", force: true do |t|
     t.string   "title"
     t.text     "body"
+    t.integer  "community_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,21 +1,43 @@
 <nav class="navigator">
 	<ul class="verticalAlign">
 		<li class="inline"><%=link_to "Home", root_path %></li>
-		><li class="inline"><%=link_to "Notas", notes_path %></li>
+		><li class="inline"><%=link_to "Apuntes", notes_path %></li>
 		><li class="inline"><%=link_to @note.title, note_path(@note) %></li>
-		><li class="inline">Edición</li>
+		><li class="inline">Editando "<%= @note.title %>"</li>
 	</ul>
 </nav>
 
-<h2 class="notes_title">Editando nota</h2>
+<h1 class="notes_title">Editando nota <%= @note.title %></h1>
 
 <section class="notes notes_list">
+
 	<%= form_for [@note] do |f| %>
-		<h3 class="notes_title"><%= f.label :título %></h3>
-		<p><%= f.text_field :title %></p>
+
+		<div class="inline_block">
+
+			<h3 class="notes_title">Comunidad:</h3>
+
+  			<p><%= f.select :community_id, Community.all.collect { |c| [ c.name, c.id ] }, include_blank: true %></p>
+  		</div>
+
+  		<div class="inline_block">
+
+			<h3 class="notes_title">
+				<%= f.label :título %>
+			</h3>
+
+			<p>
+				<%= f.text_field :title, class:"note_title" %>
+			</p>
+
+		</div>
+
 		<h3 class="notes_title"><%= f.label :contenido %></h3>
-		<p><%= f.text_area :body %></p>
-		<p class="button"><%= f.submit "Guardar" %></p>
-		<p class="button"><%= link_to "Cancelar", note_path(@note) %></p>
+
+		<p><%= f.text_area :body, class:"note_body" %></p>
+
+		<%= f.submit "Guardar", :class => "submit_button inline_block" %>
+		<p class="button inline_block"><%= link_to "Cancelar", note_path(@note) %></p>
+
 	<% end %>
 </section>
