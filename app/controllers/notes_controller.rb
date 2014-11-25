@@ -1,21 +1,22 @@
 class NotesController < ApplicationController
 
-  before_action :set_note, only: [:show, :destroy, :update]
+  before_action :set_community
+  before_action :set_notes
+  before_action :set_note, only: [:show, :destroy, :edit, :update]
 
 	def index
-		@notes=Note.order(created_at: :desc).limit(10)
+		@notes = @notes.order(created_at: :desc).limit(10)
 	end
 
 	def show
-		
 	end
 
 	def new
-		@note=Note.new
+		@note = Note.new
 	end
 
 	def create
-		@note=Note.new(note_params)
+		@note = Note.new(note_params)
 
 		@note.community_id.to_i
 
@@ -27,8 +28,11 @@ class NotesController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
 	def  update  
-	   if  @note.update_attributes(params[:note].permit(:community_id, :title, :body))  
+	   if  @note.update_attributes(note_params)
 	       redirect_to notes_path
 	       flash[:note_updated] = "¡Has actualizado #{@note.title} satisfactoriamente!"
 	   else 
@@ -39,26 +43,46 @@ class NotesController < ApplicationController
 	end
 
 	def destroy
-		@note.destroy
-		if @note.save
+		if @note.destroy
 			redirect_to notes_path
-			flash[:note_updated] = "¡Has eliminad #{@note.title} satisfactoriamente!"
+			flash[:note_updated] = "¡Has eliminado #{@note.title} satisfactoriamente!"
 		else
 			render :index
 		end
 	end
 
-	def edit
-		@note = Note.find(params[:id])
-	end
-
 	private
 		def note_params
-			params.require(:note).permit(:community_id, :title,:body)
+			params.require(:note).permit(:title, :body, :community_id, :published)
 		end
 
+		def set_community
+			if params[:community_id]
+				@community = Community.find(params[:community_id])
+			end	
+		end
+
+    def set_notes
+	    if @community
+		    @notes = Note.accesible_by(@community.id)
+		  else
+			  @notes = Note.published
+		  end
+    end
+
 		def set_note
-			@note=Note.find(params[:id])
+			@note = @notes.find(params[:id])
 		end
 
 end
+
+=begin
+			if
+				@note.accesible_by(@note.community.id))
+			else
+				redirect_to notes_path
+			end
+
+=end
+
+

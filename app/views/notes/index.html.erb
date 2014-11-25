@@ -27,11 +27,24 @@
 	<% @notes.each do |note|%>
 	
 		<li class="notes_list">
-			
-			<%= link_to note.title, note_path(note) %> 
+			<% if current_page?(notes_path) %>
+				<%=link_to note.title, note_path(note) %>
+			<% else %>
+				<%=link_to note.title, community_note_path(@community, note) %>
+			<% end %> 
 
 			<p class="actions inline_block">
-				- <%=link_to "editar", edit_note_path(note) %> | <%= link_to "borrar", note_path(note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{note.title}?"}%> 
+				<% if current_page?(notes_path) %>
+					- <%=link_to "editar", edit_note_path(note) %>
+				<% else %>
+					- <%=link_to "editar", edit_community_note_path(@community, note) %>
+				<% end %>
+				 | 
+				 <% if current_page?(notes_path) %>
+					<%=link_to "borrar", note_path(note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{note.title}?"} %>
+				<% else %>
+					<%=link_to "borrar", community_note_path(@community, note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{note.title}?"} %>
+				<% end %> 
 			</p>
 
 		</li>

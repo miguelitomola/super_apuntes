@@ -8,7 +8,7 @@
 
 <h1 class="notes_title"><%= @note.title %></h1>
 
-	<% if @note.community_id >= 1 %>
+	<% if @note.community %>
 
 		<h3 class="notes_title">Comunidad:<%= link_to @note.community.name, community_path(@note.community_id)%></h3>	
 
@@ -18,7 +18,20 @@
 			
 	<% end %>
 
+	
+
 <section class="notes notes_list">
-	<p class="actions">- <%=link_to "editar", edit_note_path %> | <%= link_to "borrar", note_path(@note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{@note.title}?"}%> -</p>
-	<p class="note_body_print"><%= @note.body %></p>
+	<p class="actions">
+		<% if current_page?(note_path) %>
+			- <%=link_to "editar", edit_note_path %>
+		<% else %>
+			- <%=link_to "editar", edit_community_note_path %>
+		<% end %>
+		 | 
+		 <%= link_to "borrar", note_path(@note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{@note.title}?"}%> -
+	</p>
+
+	<p class="note_body_print">
+		<%= @note.body %>
+	</p>
 </section>

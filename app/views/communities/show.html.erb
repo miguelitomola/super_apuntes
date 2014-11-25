@@ -14,14 +14,17 @@
 	<ul class="communities_notes">
 		
 		<h3 class="communities_notes_title inline_block">Apuntes de la comunidad</h3>
-		<p class="inline_block verticalAlign"> - <%=link_to "Nueva nota", new_note_path(@community) %>
+		<p class="inline_block verticalAlign"> - <%=link_to "Nueva nota", new_community_note_path(@community) %>
 
 		<% @community.notes.each do |note| %>
 			<li class="communities_notes_list">
-			<p><%= link_to note.title, note_path(note) %></p>
+			<p><%= link_to note.title, community_note_path(@community, note) %></p>
 		</li>
 		<% end %>
 
 	</ul>
+
+	<%= link_to "apuntes accesibles a esta comunidad", community_notes_path(@community) %>
+
 </section>
 

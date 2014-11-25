@@ -30,7 +30,7 @@ before_action :set_community, only: [:show, :destroy, :update]
 	end
 
 	def update
-		if @community.update_attributes(params[:community].permit(:name,:description))
+		if @community.update_attributes(community_params)
 			redirect_to communities_path
 			flash[:community_updated] = "¡Has actualizado #{@community.name} correctamente!"
 		else

@@ -36,8 +36,15 @@
 
 		<p><%= f.text_area :body, class:"note_body" %></p>
 
+		<p>
+			<%= f.label "Nota pública" %>
+			<%= f.check_box :published %>
+		</p>
+
 		<%= f.submit "Guardar", :class => "submit_button inline_block" %>
-		<p class="button inline_block"><%= link_to "Cancelar", note_path(@note) %></p>
+		<p class="button inline_block">
+			<%= link_to "Cancelar", note_path(@note) %>
+		</p>
 
 	<% end %>
 </section>

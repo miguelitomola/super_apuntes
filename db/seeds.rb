@@ -19,12 +19,20 @@ Community.create(name: 'Marketing-Generation',
 
 ##################################################
 
-Note.create(title: 'Nota de prueba', 
-	body: 'Esta es una la nota de prueba uno',
+Note.create(title: 'Nota de IronHack 1', 
+	body: 'Esta es una la nota de IronHack uno',
 	community_id: 1)
 
-Note.create(title: 'Nota de prueba 2', 
-	body: 'Esta es la nota de prueba dos',
+Note.create(title: 'Nota de IronHack 2', 
+	body: 'Esta es la nota de IronHack dos',
+	community_id: 1)
+
+Note.create(title: 'Nota de Marketing 1', 
+	body: 'Esta es la nota de Marketing uno',
+	community_id: 2)
+
+Note.create(title: 'Nota de Marketing 2', 
+	body: 'Esta es la nota de Marketing dos',
 	community_id: 2)
 
 ##################################################
