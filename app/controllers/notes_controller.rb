@@ -33,7 +33,7 @@ class NotesController < ApplicationController
 
 	def  update  
 	   if  @note.update_attributes(note_params)
-	       redirect_to notes_path
+	       redirect_to (@community? community_notes_path(@community): notes_path)
 	       flash[:note_updated] = "¡Has actualizado #{@note.title} satisfactoriamente!"
 	   else 
 	   	   #¿Qué hace este else? 
@@ -44,7 +44,7 @@ class NotesController < ApplicationController
 
 	def destroy
 		if @note.destroy
-			redirect_to notes_path
+			redirect_to (@community? community_notes_path(@community): notes_path)
 			flash[:note_updated] = "¡Has eliminado #{@note.title} satisfactoriamente!"
 		else
 			render :index
