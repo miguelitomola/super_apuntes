@@ -38,3 +38,5 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# gem Authlogic to authenticate Users (recommended by my mentor)
+gem 'authlogic'
