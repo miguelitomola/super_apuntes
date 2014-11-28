@@ -7,27 +7,71 @@ body{
 	background-image: url(papel_arrugado.jpg);
 }
 
-.title{
+.home_container{
+	position: relative;
+}
+
+.register{
+	position: absolute;;
+	top:20px;
+	right: 20px;
+	font-family: 'Viga', sans-serif;
+	font-size: 20px;
+}
+
+.title{	
 	margin-top: 75px;
 	margin-bottom: 75px;
 	text-align: center;
 	font-size: 50px;
 	color: darkblue;
-	font-weight: bold;
-	font-family: monaco,Consolas,"Lucida Console",monospace;
+	font-family: 'Viga', sans-serif;
+	height: 80px;
+}
+
+.title2{	
+	margin-top: 75px;
+	margin-bottom: 25px;
+	text-align: center;
+	font-size: 50px;
+	color: darkblue;
+	font-family: 'Viga', sans-serif;
 	height: 80px;
 }
 
 
 .navigator{
+	margin-top: 50px;
 	margin-bottom: 50px;
 	text-align: center;
 	background-color: rgba(132, 150, 205, 0.61);
 	height: 75px;
-	font-size: 15px;
-	font-family: monaco,Consolas,"Lucida Console",monospace;
 }
 
+.navigator_text{
+	font-size: 20px;
+	font-family: 'Viga', sans-serif;
+}
+
+/* unvisited link */
+a:link.navigator_text {
+    color: darkred;
+}
+
+/* visited link */
+a:visited.navigator_text{
+    color: darkred;
+}
+
+/* mouse over link */
+a:hover.navigator_text {
+    color: darkred;
+}
+
+/* selected link */
+a:active.navigator_text {
+    color: darkred;
+}
 
 
 .container{
@@ -65,5 +109,57 @@ body{
 	display: inline-block;
 }
 
+/* unvisited link */
+a:link.account_link {
+    color: rgb(226, 110, 39);
+}
+
+/* visited link */
+a:visited.account_link{
+    color: rgb(226, 110, 39);
+}
+
+/* mouse over link */
+a:hover.account_link {
+    color: rgb(226, 110, 39);
+}
+
+/* selected link */
+a:active.account_link {
+    color: rgb(226, 110, 39);
+}
+
+.aboutme_container{
+	padding: 20px;
+	margin: 0 auto;
+	background-color: rgba(24, 112, 174, 0.45);
+	width: 60%;
+	border-radius: 20px;
+}
+
+.text_container{
+}
+
+.text_content{
+	font-size: 20px;	
+	line-height: 30px;
+	color: black;
+	font-family: 'Viga', sans-serif;
+}
+
+.text_content2{
+	text-align: center;
+	margin-top: 25px;
+}
 
 
+.photo_aboutme{
+	border: 5px solid darkblue;
+	display: block;
+	float: right; 
+	margin-left: 10px;
+}
+
+.home_decoration{
+	text-align: center;
+}

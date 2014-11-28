@@ -1,15 +1,22 @@
 <nav class="navigator">
-	<ul class="verticalAlign">
-		<li class="inline"><%=link_to "Home", root_path %></li>
-		><li class="inline"><%=link_to "Comunidades", communities_path %></li>
-		><li class="inline"><%= @community.name %></li>
-	</ul>
+  <ul class="verticalAlign">
+      <li class="inline">
+      <%=link_to 'Home', root_path, class:"navigator_text" %></li> 
+
+      ><li class="inline">
+      <%=link_to 'Comunidades', communities_path, class:"navigator_text" %>
+    	</li> 
+
+      ><li class="inline navigator_text"><%= @community.name %></li>
+  </ul>
 </nav>
 
 <section class="communities communities_list">
 	
 	<h2 class="communities_title inline_block"><%= @community.name %></h2>
-	<p class="inline_block verticalAlign">- <%=link_to "editar", edit_community_path, class:"communities_link" %> | <%= link_to "borrar", community_path(@community), method: :delete, data: {confirm: "¿Seguro que que quires eliminiar #{@community.name}?"}, class:"communities_link"%> -</p>
+	<p class="inline_block verticalAlign">- 
+		<%= link_to "editar", edit_community_path, class:"communities_link" %> | 
+		<%= link_to "borrar", community_path(@community), method: :delete, data: {confirm: "¿Seguro que que quires eliminiar #{@community.name}?"}, class:"communities_link"%> -</p>
 
 	<ul class="communities_notes">
 		
@@ -24,7 +31,7 @@
 
 	</ul>
 
-	<%= link_to "apuntes accesibles a esta comunidad", community_notes_path(@community) %>
+	<%= link_to "todos los apuntes accesibles a esta comunidad", community_notes_path(@community), class:"communities_link"%>
 
 </section>
 

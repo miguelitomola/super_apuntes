@@ -1,12 +1,28 @@
 <nav class="navigator">
 	<ul class="verticalAlign">
-		<li class="inline"><%=link_to "Home", root_path %></li>
-		><li class="inline">Apuntes</li>
+		<% if @community %>
+			<li class="inline">
+			<%=link_to 'Home', root_path, class:"navigator_text" %></li> 
+			><li class="inline">
+			<%=link_to @community.name, community_path(@community), class:"navigator_text" %></li>
+			><li class="inline navigator_text">
+			Apuntes
+			</li>
+		<% else %>
+			<li class="inline">
+			<%=link_to 'Home', root_path, class:"navigator_text" %></li> 
+			><li class="inline navigator_text">
+			Apuntes
+			</li> 
+		<% end %>
 	</ul>
 </nav>
 
-<h2 class="notes_title"><%= link_to "Nueva nota", new_note_path %></h2>
-<br>
+<h2 class="notes_title">
+	<%=link_to "Nueva nota",@community? new_community_note_path(@community): new_note_path %>
+</h2>
+	
+
 
 <h1 class="notes_title">Últimos apuntes</h1>
 
@@ -34,17 +50,9 @@
 			<% end %> 
 
 			<p class="actions inline_block">
-				<% if current_page?(notes_path) %>
-					- <%=link_to "editar", edit_note_path(note) %>
-				<% else %>
-					- <%=link_to "editar", edit_community_note_path(@community, note) %>
-				<% end %>
-				 | 
-				 <% if current_page?(notes_path) %>
-					<%=link_to "borrar", note_path(note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{note.title}?"} %>
-				<% else %>
-					<%=link_to "borrar", community_note_path(@community, note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{note.title}?"} %>
-				<% end %> 
+			<%=link_to "editar",@community? edit_community_note_path(@community, note): edit_note_path(note) %>	
+			 | 	
+			<%=link_to "borrar", @community? community_note_path(@community, note): note_path(note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{note.title}?"}%> 
 			</p>
 
 		</li>

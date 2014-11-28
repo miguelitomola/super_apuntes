@@ -36,4 +36,7 @@ Note.create(title: 'Nota de Marketing 2',
 	community_id: 2)
 
 ##################################################
-
+User.create(username: User.admin_name, 
+	email:'admin@superapuntes.com', 
+	password: '1234', 
+	password_confirmation: '1234')

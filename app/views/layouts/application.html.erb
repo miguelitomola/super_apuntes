@@ -5,8 +5,21 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application', defer: :true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Viga' rel='stylesheet' type='text/css'>
+ 	<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+	  <div class="register" id="register">
+      <p class="inline notice" id="notice"><%= notice %></p>
+	  	<% if current_user %>
+        <%= link_to "Edit Profile", edit_user_path(current_user.id)%> |
+        <%= link_to "Logout", :logout%>
+      <% else %>
+      	<%= link_to "Regístrate", new_user_path, class:"account_link" %> |
+      	<%= link_to "Inicia sesión", :login, class:"account_link" %>
+      <% end %>
+    </div>
 
 <%= yield %>
 

@@ -1,10 +1,41 @@
 <nav class="navigator">
-	<ul class="verticalAlign">
-		<li class="inline"><%=link_to "Home", root_path %></li>
-		><li class="inline"><%=link_to "Apuntes", notes_path %></li>
-		><li class="inline"><%=link_to @note.title, note_path(@note) %></li>
-		><li class="inline">Editando "<%= @note.title %>"</li>
-	</ul>
+  <ul class="verticalAlign">
+    <% if @community %>
+
+      <li class="inline">
+      <%=link_to 'Home', root_path, class:"navigator_text" %></li> 
+
+      ><li class="inline">
+      <%=link_to @community.name, community_path(@community), class:"navigator_text" %>
+      </li>
+
+      ><li class="inline">
+      <%=link_to "Apuntes", community_notes_path(@community), class:"navigator_text" %>
+      </li>
+
+      ><li class="inline">
+      <%=link_to @note.title, community_note_path(@community, @note), class:"navigator_text" %>
+      </li>
+
+
+      ><li class="inline navigator_text">
+      Editando nota
+      </li>
+
+    <% else %>
+
+      <li class="inline">
+      <%=link_to 'Home', root_path, class:"navigator_text" %></li> 
+
+      ><li class="inline">
+      <%=link_to "Apuntes", notes_path, class:"navigator_text" %>
+      </li>
+
+      ><li class="inline navigator_text">
+      Editando nota
+      </li> 
+    <% end %>
+  </ul>
 </nav>
 
 <h1 class="notes_title">Editando nota <%= @note.title %></h1>
@@ -43,7 +74,7 @@
 
 		<%= f.submit "Guardar", :class => "submit_button inline_block" %>
 		<p class="button inline_block">
-			<%= link_to "Cancelar", note_path(@note) %>
+			<%= link_to "Cancelar", @community? community_notes_path(@community): notes_path %>
 		</p>
 
 	<% end %>

@@ -1,27 +1,36 @@
-<section class="title">
-	<h1 class="verticalAlign">Bienvenido a Los Super-Apuntes</h1>
-</section>
-
-
-<nav class="navigator">
-	<ul class="verticalAlign">
-		<li class="inline"><%=link_to 'Apuntes', notes_path %></li>
-		<li class="inline"><%=link_to 'Comunidades', communities_path%></li>
-		<li class="inline"><%=link_to '¿Quiénes somos?', sample_path %></li>
-	</ul>
-</nav>
-
-<section class="container">
-
-	<section class="main_buttons verticalAlign">
-
-		<div class="enter_button button_left">
-			<p class="verticalAlign">Busca apuntes</p>
-		</div>
-		<div class="enter_button button_right">
-			<p class="verticalAlign">Inicia sesión</p>
-		</div>
+<article class="home_container">
+	<section class="title">
+		<h1 class="verticalAlign">Bienvenido a los Super-Apuntes</h1>
+	</section>
+	
+	
+	<nav class="navigator">
+		<ul class="verticalAlign">
+			<li class="inline"><%=link_to 'Apuntes', notes_path, class:"navigator_text" %></li> |
+			<li class="inline"><%=link_to 'Comunidades', communities_path, class:"navigator_text"%></li> |
+			<li class="inline"><%=link_to 'Sobre mi', aboutme_path, class:"navigator_text" %></li>
+		</ul>
+	</nav>
+	
+	<section class="home_decoration">
+		<%= image_tag "boligrafos.png" %>
 
 	</section>
 
-</section>
+
+
+<!-- 	<section class="container">
+	
+		<section class="main_buttons verticalAlign">
+	
+			<div class="enter_button button_left">
+				<p class="verticalAlign">Busca apuntes</p>
+			</div>
+			<div class="enter_button button_right">
+				<p class="verticalAlign">Inicia sesión</p>
+			</div>
+	
+		</section>
+	
+	</section> -->
+</article>

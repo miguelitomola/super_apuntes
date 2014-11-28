@@ -1,9 +1,35 @@
 <nav class="navigator">
-	<ul class="verticalAlign">
-		<li class="inline"><%=link_to "Home", root_path %></li>
-		><li class="inline"><%=link_to "Apuntes", notes_path %></li>
-		><li class="inline"><%= @note.title %></li>
-	</ul>
+  <ul class="verticalAlign">
+    <% if @community %>
+
+      <li class="inline">
+      <%=link_to 'Home', root_path, class:"navigator_text" %></li> 
+
+      ><li class="inline">
+      <%=link_to @community.name, community_path(@community), class:"navigator_text" %>
+      </li>
+
+      <%=link_to "Apuntes", community_notes_path(@community), class:"navigator_text" %>
+      </li>
+
+      ><li class="inline navigator_text">
+      <%= @note.title %>
+      </li>
+
+    <% else %>
+
+      <li class="inline">
+      <%=link_to 'Home', root_path, class:"navigator_text" %></li> 
+
+      ><li class="inline">
+      <%=link_to "Apuntes", notes_path, class:"navigator_text" %>
+      </li>
+
+      ><li class="inline navigator_text">
+      <%= @note.title %>
+      </li> 
+    <% end %>
+  </ul>
 </nav>
 
 <h1 class="notes_title"><%= @note.title %></h1>
@@ -22,13 +48,11 @@
 
 <section class="notes notes_list">
 	<p class="actions">
-		<% if current_page?(note_path) %>
-			- <%=link_to "editar", edit_note_path %>
-		<% else %>
-			- <%=link_to "editar", edit_community_note_path %>
-		<% end %>
+		- <%=link_to "editar",@community? edit_community_note_path(@community, @note): edit_note_path(@note) %>
 		 | 
-		 <%= link_to "borrar", note_path(@note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{@note.title}?"}%> -
+		<%= link_to "borrar", @community? community_note_path(@community, @note): note_path(@note), method: :delete, data: {confirm: "¿Seguro que que quieres eliminiar #{@note.title}?"}%> -
+		
+
 	</p>
 
 	<p class="note_body_print">

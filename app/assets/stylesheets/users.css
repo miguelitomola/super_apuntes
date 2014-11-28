@@ -1,0 +1,71 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.user_page_container{
+}
+
+.user_form_container{
+	margin: 0 auto;
+	margin-top: 100px;
+	background-color: rgba(76, 76, 76, 0.84);
+	width: 300px;
+	padding: 25px;
+	padding-left: 40px;
+	border-radius: 40px;
+	color: white;
+}
+
+h3.user_form_title{
+	font-size: 25px;
+}
+
+.user_form_title{
+	margin-bottom: 20px;
+}
+
+.user_form_field{
+	margin: 10px;	
+	margin: 0 auto;
+	font-size: 15px;
+}
+
+.user_form_label{
+	font-size: 15px;
+	font-family: font-family: 'Audiowide', cursive;
+}
+
+.user_form_input{
+	font-size: 18px;
+	width: 220px;
+}
+
+/* unvisited link */
+a:link.form_link {
+    color: white ;
+}
+
+/* visited link */
+a:visited.form_link{
+    color: white ;
+}
+
+/* mouse over link */
+a:hover.form_link {
+    color: white ;
+}
+
+/* selected link */
+a:active.form_link {
+    color: white ;
+}
+
+.submit_user{
+	font-size: 18px;
+}
+
+.notice{
+	font-family: 'Viga', sans-serif;
+	font-size: 20px;
+}

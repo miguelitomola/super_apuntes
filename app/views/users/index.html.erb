@@ -1,0 +1,31 @@
+<h1>Listing users</h1>
+
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Ver', user_path(user) %></td>
+        <td><%= link_to 'Editar', edit_user_path(user) %></td>
+        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Seguro que quieres eliminar esta cuenta de usuario?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Regístrate', new_user_path %>

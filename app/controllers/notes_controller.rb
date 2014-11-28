@@ -2,7 +2,7 @@ class NotesController < ApplicationController
 
   before_action :set_community
   before_action :set_notes
-  before_action :set_note, only: [:show, :destroy, :edit, :update]
+  before_action :set_note, only: [:show, :destroy, :update, :edit]
 
 	def index
 		@notes = @notes.order(created_at: :desc).limit(10)
@@ -17,33 +17,34 @@ class NotesController < ApplicationController
 
 	def create
 		@note = Note.new(note_params)
-
-		@note.community_id.to_i
-
+		community_id = @note.community_id.to_i
 		if @note.save
-			redirect_to notes_path
+			redirect_to (community_id>0? community_notes_path(community_id): notes_path)
 			flash[:new_note] = "¡Has creado una nueva nota satisfactoriamente!"
 		else
-         	render :new
+      render :new
 		end
 	end
 
 	def edit
 	end
 
-	def  update  
-	   if  @note.update_attributes(note_params)
-	       redirect_to (@community? community_notes_path(@community): notes_path)
-	       flash[:note_updated] = "¡Has actualizado #{@note.title} satisfactoriamente!"
+	def  update 
+		community_id = @note.community_id.to_i
+	   if @note.update_attributes(note_params)
+	      #lo redirijo al index de notes con o sin community y solo si se ha guardado
+	      redirect_to (community_id>0? community_notes_path(community_id): notes_path)
+	      flash[:note_updated] = "¡Has actualizado #{@note.title} satisfactoriamente!"
 	   else 
-	   	   #¿Qué hace este else? 
-	       @errors = note.errors.full_messages  
-	       render ‘edit’  
+	   	  #¿Qué hace este else? 
+	      @errors = note.errors.full_messages  
+	      render ‘edit’  
 	   end  
 	end
 
 	def destroy
-		if @note.destroy
+	@note.destroy
+		if @note
 			redirect_to (@community? community_notes_path(@community): notes_path)
 			flash[:note_updated] = "¡Has eliminado #{@note.title} satisfactoriamente!"
 		else
@@ -71,7 +72,7 @@ class NotesController < ApplicationController
     end
 
 		def set_note
-			@note = @notes.find(params[:id])
+			@note = Note.find(params[:id])
 		end
 
 end

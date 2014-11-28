@@ -1,8 +1,12 @@
 <nav class="navigator">
-	<ul class="verticalAlign">
-		<li class="inline"><%=link_to "Home", root_path %></li>
-		><li class="inline">Comunidades</li>
-	</ul>
+  <ul class="verticalAlign">
+      <li class="inline">
+      <%=link_to 'Home', root_path, class:"navigator_text" %></li> 
+
+      ><li class="inline navigator_text">
+      Comunidades
+      </li>
+  </ul>
 </nav>
 
 <h2 class="communities_title"><%= link_to "Nueva comunidad", new_community_path %></h2>
